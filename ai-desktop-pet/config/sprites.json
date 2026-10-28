@@ -1,0 +1,9 @@
+{
+  "_comment": "Optional sprite setup. Put PNG files in the assets folder. 'image' is the single picture used for the pet (default: pet.png). 'frames' lets you add real animation frames later: list file names for 'idle' and/or 'walk'. If a list has 2+ files, the pet cycles through them. If the files are missing, the built-in drawn pet is used.",
+  "image": "pet.png",
+  "frames": {
+    "idle": [],
+    "walk": []
+  },
+  "frameMs": 140
+}

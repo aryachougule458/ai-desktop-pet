@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' file: data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>Pet</title>
+  <link rel="stylesheet" href="pet.css">
+</head>
+<body>
+  <div id="actor" hidden>
+    <div id="bubble" class="side-right"><span id="bubbleText"></span></div>
+
+    <div id="chat" class="side-right">
+      <div class="chat-head">
+        <span id="chatTitle">Chat</span>
+        <button id="chatClose" type="button" title="Close chat">&times;</button>
+      </div>
+      <div id="chatLog"></div>
+      <form id="chatForm" autocomplete="off">
+        <input id="chatInput" type="text" maxlength="300" placeholder="Say something...">
+        <button id="chatSend" type="submit">Send</button>
+      </form>
+    </div>
+
+    <div id="shadow"></div>
+    <div id="flip"><div id="body"></div></div>
+  </div>
+  <script src="pet.js"></script>
+</body>
+</html>

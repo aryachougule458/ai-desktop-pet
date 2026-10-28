@@ -1,0 +1,63 @@
+{
+  "_comment": "Basic (offline) chat replies. Rules are checked top to bottom; the first rule whose pattern (a regular expression, case-insensitive) matches wins.",
+  "rules": [
+    {
+      "patterns": ["nice to meet you", "pleased to meet you", "good to meet you"],
+      "replies": ["Nice to meet you too. I'll be around.", "Likewise! I'm glad you're here.", "Nice to meet you. I like it here."]
+    },
+    {
+      "patterns": ["how are you", "how's it going", "how are u", "how do you do", "what's up", "whats up"],
+      "replies": ["I'm good, just sitting here. How about you?", "Pretty comfy, thanks. How are you doing?", "Doing fine. How's your day going?"]
+    },
+    {
+      "patterns": ["\\btired\\b", "sleepy", "exhausted", "worn out", "no energy"],
+      "replies": ["Sounds like a break could help. Maybe stretch a little?", "Tired, huh. Take a few slow breaths, and some water too.", "Rest your eyes for a minute. I'll keep watch."]
+    },
+    {
+      "patterns": ["\\bwater\\b", "thirsty", "hydrate", "hydration"],
+      "replies": ["Good idea. Go grab a glass, I'll wait here.", "Yes, water time. I'll be right here.", "Great plan. A few sips will help."]
+    },
+    {
+      "patterns": ["stress", "anxious", "overwhelm", "worried", "too much", "panic"],
+      "replies": ["That sounds heavy. Try one slow breath with me, then one small step.", "One thing at a time. I'm right here with you.", "Take a short pause. It's okay to go slowly."]
+    },
+    {
+      "patterns": ["\\bbreak\\b", "stretch", "back hurts", "neck", "sitting too long"],
+      "replies": ["Yes, stand up and stretch for a moment.", "Roll your shoulders and shake out your hands.", "A short walk would do you good."]
+    },
+    {
+      "patterns": ["\\bsad\\b", "lonely", "bad day", "feeling down", "upset"],
+      "replies": ["I'm sorry. I'm here if you want to sit together for a bit.", "That's rough. Want to take a little break?", "Bad days happen. I'll stay close."]
+    },
+    {
+      "patterns": ["thank", "thanks", "thx"],
+      "replies": ["Anytime.", "You're welcome.", "Happy to help, in my tiny way."]
+    },
+    {
+      "patterns": ["\\bbye\\b", "see you", "good night", "gotta go", "goodnight"],
+      "replies": ["Bye for now. I'll be around.", "See you later. Don't forget some water.", "Good night. Rest well."]
+    },
+    {
+      "patterns": ["your name", "who are you"],
+      "replies": ["I'm Pip, your tiny desktop companion.", "Pip. I live on your desktop."]
+    },
+    {
+      "patterns": ["\\bcute\\b", "love you", "good pet", "good boy", "good girl", "so sweet"],
+      "replies": ["Aw, thanks.", "You're kind. I'll wiggle a little.", "That made my day."]
+    },
+    {
+      "patterns": ["\\b(happy|great|awesome|excited|amazing)\\b", "\\bgood\\b", "\\bfine\\b", "doing well"],
+      "replies": ["Nice, glad to hear it.", "That's good. Keep it up.", "Love that. Don't forget water though."]
+    },
+    {
+      "patterns": ["^\\s*(hi|hello|hey|hiya|yo|good (morning|afternoon|evening))\\b"],
+      "replies": ["Hi! Good to see you.", "Hello. How are you doing?", "Hey. I'm right here."]
+    }
+  ],
+  "fallback": [
+    "Hmm, tell me more.",
+    "I'm listening.",
+    "I'm only a tiny pet, but I'm happy to keep you company.",
+    "Okay. Want a quick stretch or some water?"
+  ]
+}

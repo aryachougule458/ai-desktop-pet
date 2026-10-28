@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' file: data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>AI Desktop Pet - Settings</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fffaf3; color: #2b2118; font: 14px/1.4 "Segoe UI", system-ui, -apple-system, Arial, sans-serif; }
+    header { padding: 16px 20px 10px; background: #f6a455; color: #fff; display: flex; justify-content: space-between; align-items: baseline; }
+    header h1 { margin: 0; font-size: 18px; }
+    #saved { font-size: 12px; opacity: 0; transition: opacity .3s; }
+    #saved.show { opacity: 1; }
+    main { padding: 8px 20px 28px; }
+    section { margin-top: 18px; }
+    h2 { margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: #b06a1f; }
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid #f0e2cc; }
+    .row label { flex: 1; }
+    .row small { display: block; color: #8a7a68; }
+    input[type=number], input[type=time], input[type=password], input[type=text], select {
+      font: inherit; padding: 5px 8px; border: 1px solid #e3cfae; border-radius: 8px; background: #fff; color: inherit;
+    }
+    input[type=password] { width: 200px; }
+    input[type=number] { width: 80px; }
+    input[type=range] { width: 170px; accent-color: #f6a455; }
+    input[type=checkbox] { width: 18px; height: 18px; accent-color: #f6a455; }
+    .range-val { width: 46px; text-align: right; color: #8a7a68; }
+    button { font: inherit; padding: 6px 12px; border: 0; border-radius: 8px; background: #f6a455; color: #fff; font-weight: 600; cursor: pointer; }
+    button.alt { background: #fff; color: #b06a1f; border: 1px solid #e3cfae; }
+    .btns { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 8px; }
+    .status { padding: 6px 0; color: #6b5a47; }
+    .warn { color: #a24a1a; }
+    .hidden { display: none !important; }
+    .inline { display: flex; align-items: center; gap: 6px; }
+  </style>
+</head>
+<body>
+  <header><h1>Pet settings</h1><span id="saved">Saved</span></header>
+  <main>
+    <section>
+      <h2>Pet</h2>
+      <div class="row"><label for="enabled">Enable pet<small>Off hides the pet and the summon button.</small></label><input type="checkbox" id="enabled" data-key="enabled"></div>
+      <div class="row"><label for="petSize">Pet size</label><div class="inline"><input type="range" id="petSize" min="80" max="260" step="10" data-key="petSize" data-type="number"><span class="range-val" data-out="petSize"></span></div></div>
+      <div class="row"><label for="animationSpeed">Animation speed</label><div class="inline"><input type="range" id="animationSpeed" min="0.5" max="2" step="0.1" data-key="animationSpeed" data-type="number"><span class="range-val" data-out="animationSpeed"></span></div></div>
+      <div class="row"><label for="sound">Sound<small>A soft chime when the pet speaks.</small></label><input type="checkbox" id="sound" data-key="sound"></div>
+      <div class="row"><label for="alwaysOnTop">Always on top</label><input type="checkbox" id="alwaysOnTop" data-key="alwaysOnTop"></div>
+      <div class="row"><label for="launchAtStartup">Launch when computer starts</label><input type="checkbox" id="launchAtStartup" data-key="launchAtStartup"></div>
+    </section>
+
+    <section>
+      <h2>Visits &amp; reminders</h2>
+      <div class="row"><label for="visitSelect">Visit frequency</label>
+        <div class="inline">
+          <select id="visitSelect">
+            <option value="5">Every 5 min</option><option value="10">Every 10 min</option><option value="15">Every 15 min</option>
+            <option value="30">Every 30 min</option><option value="60">Every 1 hour</option><option value="custom">Custom...</option>
+          </select>
+          <span id="customWrap" class="inline hidden"><input type="number" id="visitCustom" min="1" max="1440" step="1"> min</span>
+        </div>
+      </div>
+      <div class="row"><label for="waterSelect">Water reminder frequency<small>A separate reminder just for drinking water.</small></label>
+        <select id="waterSelect" data-key="waterMinutes" data-type="number">
+          <option value="0">Off</option><option value="15">Every 15 min</option><option value="30">Every 30 min</option><option value="45">Every 45 min</option>
+          <option value="60">Every 1 hour</option><option value="90">Every 90 min</option><option value="120">Every 2 hours</option>
+        </select>
+      </div>
+      <div class="row"><label for="checkins">Check-ins<small>Friendly "how are you?" visits.</small></label><input type="checkbox" id="checkins" data-key="checkins"></div>
+    </section>
+
+    <section>
+      <h2>Quiet mode</h2>
+      <div class="status" id="pauseStatus"></div>
+      <div class="btns">
+        <button class="alt" data-pause="30">Pause 30 minutes</button>
+        <button class="alt" data-pause="60">Pause 1 hour</button>
+        <button class="alt" data-pause="tomorrow">Pause until tomorrow</button>
+        <button data-pause="resume">Resume</button>
+      </div>
+      <div class="status">While paused, random visits stop. Summoning the pet by hand still works.</div>
+      <div class="row"><label for="qhEnabled">Quiet hours<small>Automatic quiet time every day.</small></label><input type="checkbox" id="qhEnabled" data-key="quietHours.enabled"></div>
+      <div class="row"><label>From / To</label><div class="inline"><input type="time" id="qhStart" data-key="quietHours.start"> to <input type="time" id="qhEnd" data-key="quietHours.end"></div></div>
+    </section>
+
+    <section>
+      <h2>AI chat</h2>
+      <div class="row"><label for="aiChat">AI chat<small>Off = built-in replies that work without internet or a key.</small></label><input type="checkbox" id="aiChat" data-key="aiChat"></div>
+      <div class="row"><label for="apiKey">OpenAI API key<small>Stored encrypted on this computer. Never shown again.</small></label>
+        <div class="inline"><input type="password" id="apiKey" placeholder="sk-..." autocomplete="off"><button id="saveKey">Save</button></div>
+      </div>
+      <div class="status" id="keyStatus"></div>
+      <div class="btns"><button class="alt" id="clearKey">Remove saved key</button></div>
+    </section>
+
+    <section>
+      <h2>Tools</h2>
+      <div class="btns">
+        <button id="visitNow">Visit me now</button>
+        <button class="alt" id="bringBack">Bring pet &amp; button on screen</button>
+      </div>
+      <div class="status">Pet personality, messages and chat replies live in the <b>config</b> folder of the project.</div>
+    </section>
+  </main>
+  <script src="settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "ai-desktop-pet",
+  "productName": "AI Desktop Pet",
+  "version": "1.0.0",
+  "description": "An animated AI-powered desktop pet that lives on top of your screen.",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "bring-on-screen": "electron . --bring-on-screen",
+    "selftest": "electron . --self-test",
+    "dist": "npx --yes electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0"
+  },
+  "build": {
+    "appId": "edu.genai.desktoppet",
+    "productName": "AI Desktop Pet",
+    "files": ["main.js", "preload.js", "src/**/*", "package.json"],
+    "extraResources": ["config", "assets"],
+    "win": { "target": ["portable"] },
+    "mac": { "target": ["dmg"], "category": "public.app-category.lifestyle" }
+  }
+}

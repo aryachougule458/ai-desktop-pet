@@ -1,0 +1,35 @@
+{
+  "visit": { "minSeconds": 10, "maxSeconds": 30 },
+  "categories": {
+    "greeting": [
+      "Hi, how are you doing?",
+      "Hi, checking in.",
+      "Hi, still doing okay?"
+    ],
+    "water": [
+      "Hi, want some water?",
+      "Hi, water check.",
+      "Hi, time for a sip?"
+    ],
+    "stretch": [
+      "Hi, quick stretch?",
+      "Hi, roll your shoulders?",
+      "Hi, stand up for a sec?"
+    ],
+    "break": [
+      "Hi, need a break?",
+      "Hi, rest your eyes a moment?",
+      "Hi, short break?"
+    ],
+    "mood": [
+      "Hi, how's work going?",
+      "Hi, how are you feeling?",
+      "Hi, doing okay today?"
+    ]
+  },
+  "summon": [
+    "Hi, I'm here.",
+    "Hi! Need me?",
+    "Hi, what's up?"
+  ]
+}
